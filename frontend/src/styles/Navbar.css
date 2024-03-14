@@ -1,0 +1,43 @@
+.navbar nav{
+    padding: 10px 0;
+}
+
+.navbar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li{
+    display:list-item;
+}
+
+.navbar a{
+    margin-bottom : 1%;
+    color:beige;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    background-color: rgb(69, 137, 238);
+    /* border: 1px solid red; */
+    display: block;
+}
+
+.navbar a:hover{
+    background-color: rgb(170, 83, 22);
+}
+
+.active{
+    background-color: grey;
+}
+
+.navbar{
+    padding-top: 5%;
+    border-radius: 8px;
+    background-color: gray;
+}
+
+.navbar button{
+    background-color: transparent;
+    font-size: 40px;
+}

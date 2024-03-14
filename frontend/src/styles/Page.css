@@ -1,0 +1,14 @@
+.page{
+    font-size: 20px;
+}
+
+.page button{
+    background-color:  rgb(69, 137, 238);
+    padding: 1% 4%;
+    border-radius: 8px;
+    color:beige;
+}
+
+.page button:hover{
+    background-color: rgb(170, 83, 22);
+}
