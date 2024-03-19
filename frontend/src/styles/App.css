@@ -39,18 +39,38 @@
 }
 
 .app-content{
-  display: flex;
+  /* display: flex; */
   align-items: center;
 }
 
-.app-navbar{
-  width: 1%;
-  /* border: solid red 1px; */
-  transition: width 0.5s ease;
+.menu {
+  position: fixed;
+  top: 0;
+  left: -30%; /* start off-screen */
+  width: 25%; /* adjust width as needed */
+  height: 100%;
+  background-color: grey;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: left 0.3s ease;
 }
 
-.app-main-content{
-  width: 99%;
-  transition: width 0.5s ease;
-  /* border: solid red 1px; */
+.menu.open{
+  left: 0;
+}
+
+.close-menu{
+  text-align: left;
+}
+
+.close-menu button{
+  background-color: transparent;
+  font-size: 50px;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-top: 2px;
+  margin-left: 2px;
+}
+
+.close-menu button:hover{
+  background-color: rgb(175, 171, 171);
 }

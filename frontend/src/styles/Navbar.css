@@ -39,5 +39,16 @@
 
 .navbar button{
     background-color: transparent;
-    font-size: 40px;
+    /* outline: none; */
+    border: 1px solid black;
+    border-radius: 8px;
+    font-size: 50px;
+}
+
+.navbar button:hover{
+    background-color: rgb(175, 171, 171);
+}
+
+.close-button{
+    text-align: right;
 }

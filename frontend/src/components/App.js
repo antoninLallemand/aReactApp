@@ -8,21 +8,11 @@ import { useState } from 'react'
 
 function App() {
 
-  const [menuWidth, setMenuWidth] = useState('1%')
-  const [mainWidth, setMainWidth] = useState('99%')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
 
   const toggleMenu=()=>{
-    // if (menuWidth === "15%") {
-    //   console.log('hide')
-    //   setMenuWidth("0");
-    //   setMainWidth("100%");
-    // } else {
-    //   console.log('show')
-    //   setMenuWidth("15%");
-    //   setMainWidth("85%");
-    // }
-    setMenuWidth(prevWidth => prevWidth === "1%" ? "15%" : "1%");
-    setMainWidth(prevWidth => prevWidth === "99%" ? "85%" : "99%");
+    setIsMenuOpen(!isMenuOpen);
   }
 
   return (
@@ -30,10 +20,13 @@ function App() {
       <div className="App">
         <Header/>
         <div className='app-content'>
-          <div className='app-navbar' style={{ width: menuWidth }}>
-            <Navbar toggleMenu={toggleMenu} menuWidth={menuWidth}/>
+          <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
+            <Navbar toggleMenu={toggleMenu}/>
           </div>
-          <div className='app-main-content' style={{ width: mainWidth }}>
+          <div className='close-menu'>
+            <button onClick={toggleMenu}><b>&gt;</b></button>
+          </div>
+          <div className='app-main-content'>
           <Routes>
             <Route exact path='/' element={<Home/>}/>
             <Route path='/page' element={<Page/>}/>

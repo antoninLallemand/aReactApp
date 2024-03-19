@@ -1,33 +1,35 @@
 import { NavLink } from 'react-router-dom';
 import '../styles/Navbar.css'
 
-function Navbar({toggleMenu, menuWidth}){
+function Navbar({toggleMenu}){
     return(
         <div className='navbar'>
-            <button onClick={toggleMenu}>Toggle Menu</button>
-            {menuWidth !== "1%" && (
-            <>
+            <div className='close-button'>
+                <button onClick={toggleMenu}><b>&lt;</b></button>
+            </div>
+            <div>
             <h2>Menu :</h2>
-            <nav>
-                <ul>
-                    <li>
-                        <NavLink 
-                            exact to='/'
-                            activeClassName='active'>
-                            Home
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink 
-                            to='/page'
-                            activeClassName='active'>
-                            Page
-                        </NavLink>
-                    </li>
-                </ul>
-            </nav>
-            </>
-            )}
+                <nav>
+                    <ul>
+                        <li>
+                            <NavLink 
+                                exact to='/'  
+                                activeClassName='active'
+                                onClick = {toggleMenu}>
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink 
+                                to='/page'
+                                activeClassName='active'
+                                onClick = {toggleMenu}>
+                                Page
+                            </NavLink>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     )
 }
