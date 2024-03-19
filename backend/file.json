@@ -1,1 +1,7 @@
-{"file":{"text":"server is ready","state":true,"count":21}}
+{
+  "file": {
+    "text": "server is ready",
+    "state": true,
+    "count": 21
+  }
+}

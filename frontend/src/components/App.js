@@ -1,5 +1,6 @@
 import '../styles/App.css'
 import Header from './Header'
+import Login from './Login'
 import Home from './Home'
 import Page from './Page'
 import Navbar from './Navbar'
@@ -19,6 +20,7 @@ function App() {
     <Router>
       <div className="App">
         <Header/>
+        <Login/>
         <div className='app-content'>
           <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
             <Navbar toggleMenu={toggleMenu}/>

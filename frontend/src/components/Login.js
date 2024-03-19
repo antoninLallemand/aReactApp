@@ -6,16 +6,22 @@ function Login(){
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const credentials = {
+        username : username === ''? 'void':username,
+        password : password === ''? 'void':password
+    }
     
     try {
-      const response = await fetch('http://your-backend-api.com/login', {
+      const response = await fetch('/api/credentials', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
-      });
 
+        body: JSON.stringify(credentials),
+      });
+      
       if (response.ok) {
         const { token } = await response.json();
         localStorage.setItem('token', token); // Store token securely
