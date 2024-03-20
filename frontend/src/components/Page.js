@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react"
 import '../styles/Page.css'
 
-function Page(){
+function Page({getPermission}){
 
+
+    //-------get permission from server opening this page--------
+    useEffect(()=>{
+        getPermission()
+    },[])
+
+    //-----------------------demo actions--------------------------
     const [message, getMessage] = useState({file : {
         text: 'loading',
         count: 0

@@ -3,6 +3,9 @@ import async from 'async'
 import fs from 'fs'
 import bodyParser from 'body-parser'
 import { log, error } from "console"
+import jwt from 'jsonwebtoken'
+
+const secretKey = 'e78gdf9_n4ud*'
 
 const app = express()
 app.use(bodyParser.json())
@@ -35,6 +38,7 @@ app.post('/api/button', (req, res) => {
     res.json({ message: 'Data received successfully' })
 })
 
+//users management
 
 app.post('/api/credentials', (req, res) => {
     const credentials = req.body
@@ -48,19 +52,41 @@ app.post('/api/credentials', (req, res) => {
         log('saved credentials : ',savedCredentials)
 
         // Check if credentials match
-        const foundCredential = savedCredentials.credentials.find(element => {
+        const user = savedCredentials.credentials.find(element => {
             return element.username === credentials.username && element.password === credentials.password
         })
 
         // Send appropriate response based on whether credentials match
-        if(foundCredential){
-            return res.json({ message: 'ok' });
+        if(user){
+            const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '1h' })
+            log('token : ', token)
+            return res.json({ token })
         } else {
-            return res.json({ message: 'incorrect' });
+            return res.status(401).json({ error: 'invalid credentials' })
         }
     })
 })
 
+app.get('/protected', verifyToken, (req, res) => {
+    // If token is verified, user is authenticated
+    res.json({ message: 'You are authenticated' });
+});
+
+function verifyToken(req, res, next) {
+const token = req.headers.authorization && req.headers.authorization.split(' ')[1]
+
+if (!token) {
+    return res.status(401).json({ error: 'Unauthorized' })
+}
+
+jwt.verify(token, secretKey, (err, decoded) => {
+    if (err) {
+    return res.status(401).json({ error: 'Unauthorized' })
+    }
+    req.userId = decoded.userId
+    next();
+});
+}
 
 const port = process.env.PORT || 3000
 

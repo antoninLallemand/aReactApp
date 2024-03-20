@@ -3,10 +3,6 @@
   color: beige;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -25,9 +21,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -56,21 +49,12 @@
 
 .menu.open{
   left: 0;
+  z-index: 18;
 }
 
-.close-menu{
-  text-align: left;
-}
-
-.close-menu button{
-  background-color: transparent;
-  font-size: 50px;
-  border: 1px solid black;
-  border-radius: 8px;
-  margin-top: 2px;
-  margin-left: 2px;
-}
-
-.close-menu button:hover{
-  background-color: rgb(175, 171, 171);
+.app-main-content{
+  margin-left: 1%;
+  margin-right: 1%;
+  padding-top: 1%;
+  z-index: 6;
 }

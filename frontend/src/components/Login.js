@@ -1,8 +1,12 @@
+import '../styles/Login.css'
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Login(){
+function Login({onLoginSuccess}){
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate(); // Hook to perform navigation
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,10 +27,14 @@ function Login(){
       });
       
       if (response.ok) {
-        const { token } = await response.json();
-        localStorage.setItem('token', token); // Store token securely
+        // const { token } = await response.json();
+        const data = await response.json();
+        localStorage.setItem('token', data.token); // Store token securely
         // Redirect the user to the authenticated page
-        window.location.href = '/home';
+        onLoginSuccess()
+        localStorage.setItem('username', username);
+        navigate('/');
+        // window.location.href = '/home';
       } else {
         // Handle incorrect credentials
         console.error('Invalid credentials');
@@ -39,20 +47,24 @@ function Login(){
   return (
     <div>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='login-form'>
+        <label for='username'>Username : </label>
         <input
-          type="text"
-          placeholder="Username"
+          id='username'
+          type='text'
+          placeholder='Username'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        <label for='password'>Password : </label>
         <input
-          type="password"
-          placeholder="Password"
+          id='password'
+          type='password'
+          placeholder='Password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type='submit'>Login</button>
       </form>
     </div>
   );
