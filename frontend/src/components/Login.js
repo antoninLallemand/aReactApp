@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function Login({onLoginSuccess}){
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate(); // Hook to perform navigation
 
@@ -33,14 +34,16 @@ function Login({onLoginSuccess}){
         // Redirect the user to the authenticated page
         onLoginSuccess()
         localStorage.setItem('username', username);
-        navigate('/');
-        // window.location.href = '/home';
+        // navigate('/');
+        window.location.href = '/home';
       } else {
         // Handle incorrect credentials
         console.error('Invalid credentials');
+        setErrorMessage('Invalid credentials, please retry')
       }
     } catch (error) {
       console.error('Login failed:', error);
+      setErrorMessage('Login failed, please retry')
     }
   };
 
@@ -66,6 +69,7 @@ function Login({onLoginSuccess}){
         />
         <button type='submit'>Login</button>
       </form>
+      <p className='login-error-message'><b>{errorMessage}</b></p>
     </div>
   );
 };

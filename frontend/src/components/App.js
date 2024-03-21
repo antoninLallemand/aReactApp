@@ -105,7 +105,7 @@ function App({location}) {
             <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
               <Navbar toggleMenu={toggleMenu}/>
             </div>
-            <Headband logOut={handleLogout} toggleMenu={toggleMenu} ref={headbandRef}/>
+              <Headband logOut={handleLogout} toggleMenu={toggleMenu} ref={headbandRef}/>
             <div className='app-main-content' style={{ marginTop: `${headbandHeight}px` }}>
             <Routes>
               <Route exact path='/' element={<Home/>}/>

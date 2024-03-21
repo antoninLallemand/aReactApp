@@ -21,3 +21,8 @@
     padding: 2% 6%;
     font-size: 25px;
 }
+
+.login-error-message{
+    color: rgb(243, 64, 64);
+    font-size: 20px;
+}
