@@ -39,20 +39,24 @@
 .menu {
   position: fixed;
   top: 0;
-  left: -30%; /* start off-screen */
+  left : 0;
   width: 25%; /* adjust width as needed */
-  height: 100%;
+  height: 100vh;
   background-color: grey;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: left 0.3s ease;
-}
-
-.menu.open{
-  left: 0;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-150%);
   z-index: 18;
 }
 
+.menu.open{
+  /* left: 0; */
+  z-index: 18;
+  transform: translateX(0);
+}
+
 .app-main-content{
+  margin-top: 70px;
   margin-left: 1%;
   margin-right: 1%;
   padding-top: 1%;

@@ -37,7 +37,13 @@
     background-color: gray;
 }
 
-.navbar button{
+.close-button{
+    text-align: right;
+    /* border: 2px solid red; */
+    align-self : center;
+}
+
+.close-button button{
     background-color: transparent;
     /* outline: none; */
     border: 1px solid black;
@@ -45,10 +51,22 @@
     font-size: 50px;
 }
 
-.navbar button:hover{
+.close-button button:hover{
     background-color: rgb(175, 171, 171);
 }
 
-.close-button{
-    text-align: right;
+.navbar-title{
+    text-align: center;
+    padding-left: 1%;
+    width: calc(100vh - 60px);
+}
+
+.navbar-fixed{
+    display: flex;
+}
+
+.navbar-mobile{
+    height: calc(100vh - 90px); /* Adjust height to fit remaining space */
+    overflow-y: auto; /* Enable scrolling */
+    /* border: solid 2px red; */
 }

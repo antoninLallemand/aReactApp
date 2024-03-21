@@ -6,9 +6,9 @@ import Home from './Home'
 import Page from './Page'
 import Navbar from './Navbar'
 import { BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom'
-import { useRef, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
-function App({location}) {
+function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -19,7 +19,6 @@ function App({location}) {
     if (storedIsAuthenticated) {
       setIsAuthenticated(JSON.parse(storedIsAuthenticated));
     }
-    setRender(true) //render headband at reload
   }, []); // Empty dependency array ensures this effect runs only once on mount
 
   
@@ -69,21 +68,6 @@ function App({location}) {
   };
 
 
-  //---------------------get heigth of the headband div----------------------
-  const headbandRef = useRef(null);
-  const [headbandHeight, setHeadbandHeight] = useState(0);
-  const [render, setRender] = useState(false)
-
-  useEffect(() => {
-    // Calculate and set the height of the headband
-    if (headbandRef.current) {
-      const height = headbandRef.current.clientHeight;
-      console.log('height useeff : ', height)
-      setHeadbandHeight(height);
-    }
-  }, [location.pathname, render]); //render each reload and location change
-
-
   //------------------------------handle menu-----------------------------------
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -105,8 +89,8 @@ function App({location}) {
             <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
               <Navbar toggleMenu={toggleMenu}/>
             </div>
-              <Headband logOut={handleLogout} toggleMenu={toggleMenu} ref={headbandRef}/>
-            <div className='app-main-content' style={{ marginTop: `${headbandHeight}px` }}>
+              <Headband logOut={handleLogout} toggleMenu={toggleMenu}/>
+            <div className='app-main-content'>
             <Routes>
               <Route exact path='/' element={<Home/>}/>
               <Route path='/page' element={<Page getPermission={handleProtectedRequest}/>}/>

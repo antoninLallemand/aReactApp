@@ -1,13 +1,11 @@
 .headband{
     background-color: rgb(69, 137, 238);
     margin: 0;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    border-radius: 8px;
+    /* border-radius: 0 0 8px 8px; */
     font-size: 15px;
     display: flex;
     justify-content: center;
-    
+    height: 70px;
     position: fixed;
     top: 0;
     left: 0;
@@ -19,6 +17,7 @@
 .close-menu{
     text-align: left;
     width: 10%;
+    align-self: center;
 }
   
 .close-menu button{
@@ -37,16 +36,19 @@ background-color: rgb(175, 171, 171);
 .headerband-appname{
     width: 40%;
     text-align: center;
+    align-self: center;
 }
 
 .headband-username{
     width: 25%;
     text-align: center;
+    align-self: center;
 }
 
 .headband-logout{
     width: 25%;
     text-align: right;
+    align-self: center;
 }
 
 .headband-logout button{
